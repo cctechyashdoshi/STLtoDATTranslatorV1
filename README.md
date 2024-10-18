@@ -1,6 +1,8 @@
-# :octocat: `.STL` to `.DAT` Translator
+# :octocat: `.STL` to `.DAT` Translator `V1`
 
-This code allows you to convert `.stl` file into `.dat` file which can be viewed in `GNUPlot`
+This is a upgraded version of https://github.com/cctechyashdoshi/STLtoDATTranslator
+
+It allows you to convert `.stl` file into `.dat` file which can be viewed in `GNUPlot`
 
 <hr />
 
