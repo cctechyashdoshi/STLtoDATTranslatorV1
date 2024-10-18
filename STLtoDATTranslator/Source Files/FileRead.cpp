@@ -14,7 +14,6 @@ void Read::readFile(const std::string& filename, Triangulation& triangulation) {
     }
 
     std::map<Point, int> pointIndexMap;
-    std::vector<Point> point3;
     std::string line;
     int vertexCount = 0;
     int v1 = -1, v2 = -1, v3 = -1;
