@@ -1,6 +1,6 @@
-#ifndef MANAGER_H
-#define MANAGER_H
+#pragma once
 
-int managerMain();
-
-#endif // MANAGER_H
+class Manager{
+public: 
+    void managerMain();
+};

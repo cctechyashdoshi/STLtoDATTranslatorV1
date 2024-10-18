@@ -4,9 +4,9 @@
 #include "../Header Files/Manager.h"
 #include <string>
 
-// Forward declaration of the main function in Manager.cpp
-int managerMain();
 
 int main() {
-    return managerMain();
+    Manager manager;
+    manager.managerMain();
+    return 0;
 }

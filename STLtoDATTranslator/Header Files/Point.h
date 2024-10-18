@@ -1,8 +1,8 @@
 #pragma once
 
 class Point {
-public:
     double x, y, z;
+public:
 
     Point(double x, double y, double z);
     double getX() const;

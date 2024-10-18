@@ -1,15 +1,14 @@
+// STLtoDATTranslator/Source Files/Manager.cpp
+#include "../Header Files/Manager.h"
 #include "../Header Files/FileRead.h"
 #include "../Header Files/FileWrite.h"
 #include "../Header Files/Triangulation.h"
-#include "../Header Files/Manager.h"
 
-int managerMain() {
+void Manager::managerMain() {
     Read reader;
     FileWrite writer;
     Triangulation triangulation;
 
     reader.readFile("cube.stl", triangulation);
     writer.writeToFile("output.dat", triangulation);
-
-    return 0;
 }
