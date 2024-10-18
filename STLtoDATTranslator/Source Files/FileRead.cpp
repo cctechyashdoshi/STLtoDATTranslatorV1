@@ -1,28 +1,55 @@
-#include <cassert>
-#include <sstream>
 #include "../Header Files/FileRead.h"
+#include <sstream>
+#include <cassert>
 
-#define FILENAME "../Test cases/cube.stl"
+Read::Read() {}
 
-Read::Read() {};
+Read::~Read() {}
 
-std::string Read::read() {
-    std::ifstream infile(FILENAME);
-    assert(infile.is_open());
+void Read::readFile(const std::string& filename, Triangulation& triangulation) {
+    std::ifstream infile(filename);
+    if (!infile.is_open()) {
+        std::cerr << "Error: Could not open file " << filename << std::endl;
+        assert(infile.is_open());
+    }
+
+    std::map<Point, int> pointIndexMap;
+    std::vector<Point> point3;
     std::string line;
+    int vertexCount = 0;
+    int v1 = -1, v2 = -1, v3 = -1;
+
     while (getline(infile, line)) {
-        std::stringstream ss(line);
-        std::string word;
-        while (ss >> word) {
-            if (word == "vertex") {
-                std::string x, y, z;
-                ss >> x >> y >> z;
-                assert(!x.empty() && !y.empty() && !z.empty());
-                data += x + " " + y + " " + z + " ";
+        if (line.find("vertex") != std::string::npos) {
+            std::istringstream vertexStream(line);
+            std::string token;
+            double x, y, z;
+            vertexStream >> token >> x >> y >> z;
+
+            Point point(x, y, z);
+            auto it = pointIndexMap.find(point);
+            if (it == pointIndexMap.end()) {
+                triangulation.uniquePoints.push_back(point);
+                pointIndexMap[point] = static_cast<int>(triangulation.uniquePoints.size()) - 1;
+            }
+
+            if (vertexCount == 0) {
+                v1 = pointIndexMap[point];
+            } else if (vertexCount == 1) {
+                v2 = pointIndexMap[point];
+            } else if (vertexCount == 2) {
+                v3 = pointIndexMap[point];
+            }
+
+            vertexCount = (vertexCount + 1) % 3;
+
+            if (vertexCount == 0) {
+                triangulation.triangles.push_back(Triangle(
+                    triangulation.uniquePoints[v1],
+                    triangulation.uniquePoints[v2],
+                    triangulation.uniquePoints[v3]
+                ));
             }
         }
     }
-    return data;
-};
-
-Read::~Read() {};
+}

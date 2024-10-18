@@ -1,14 +1,14 @@
 #pragma once
 
 class Point {
-	int x, y, z;
 public:
-	Point(int x=0,int y=0,int z=0);
-	int getX();
-	int getY();
-	int getZ();
-	~Point();
+    double x, y, z;
+
+    Point(double x, double y, double z);
+    double getX() const;
+    double getY() const;
+    double getZ() const;
+
+    bool operator<(const Point& other) const;
+    bool operator==(const Point& other) const;
 };
-
-
-

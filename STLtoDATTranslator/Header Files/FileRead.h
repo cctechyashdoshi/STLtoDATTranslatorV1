@@ -1,13 +1,17 @@
 #pragma once
 
-#include<iostream>
-#include<string>
-#include<fstream>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <map>
+#include "Point.h"
+#include "Triangle.h"
+#include "Triangulation.h"
 
 class Read {
-std::string line, data;
 public:
     Read();
-    std::string read();
+    void readFile(const std::string& filename, Triangulation& triangulation);
     ~Read();
 };
