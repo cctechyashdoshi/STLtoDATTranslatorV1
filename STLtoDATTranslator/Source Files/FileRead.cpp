@@ -8,11 +8,6 @@ Read::~Read() {}
 
 void Read::readFile(const std::string& filename, Triangulation& triangulation) {
     std::ifstream infile(filename);
-    if (!infile.is_open()) {
-        std::cerr << "Error: Could not open file " << filename << std::endl;
-        assert(infile.is_open());
-    }
-
     std::map<Point, int> pointIndexMap;
     std::string line;
     int vertexCount = 0;

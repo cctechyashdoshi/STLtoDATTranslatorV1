@@ -14,9 +14,9 @@ void FileWrite::writeToFile(const std::string& filename, const Triangulation& tr
     }
 
     for (const auto& triangle : triangulation.triangles) {
-        outfile << triangle.p1.getX() << " " << triangle.p1.getY() << " " << triangle.p1.getZ() << std::endl;
-        outfile << triangle.p2.getX() << " " << triangle.p2.getY() << " " << triangle.p2.getZ() << std::endl;
-        outfile << triangle.p3.getX() << " " << triangle.p3.getY() << " " << triangle.p3.getZ() << std::endl;
+        outfile << triangle.getP1().getX() << " " << triangle.getP1().getY() << " " << triangle.getP1().getZ() << std::endl;
+        outfile << triangle.getP2().getX() << " " << triangle.getP2().getY() << " " << triangle.getP2().getZ() << std::endl;
+        outfile << triangle.getP3().getX() << " " << triangle.getP3().getY() << " " << triangle.getP3().getZ() << std::endl;
     }
 
     outfile.close();
