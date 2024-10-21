@@ -21,7 +21,9 @@ void Read::readFile(const std::string& filename, Triangulation& triangulation)
     std::map<Point, int> pointIndexMap;
     std::string line;
     int vertexCount = 0;
-    int v1 = -1, v2 = -1, v3 = -1;
+    int v1 = -1;
+    int v2 = -1;
+    int v3 = -1;
 
     while (getline(infile, line)) {
         if (line.find("vertex") != std::string::npos) {
