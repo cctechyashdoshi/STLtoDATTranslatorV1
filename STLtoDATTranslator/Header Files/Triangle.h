@@ -9,7 +9,7 @@ public:
     Triangle(const Point& p1, const Point& p2, const Point& p3);
     ~Triangle();
 
-    const Point& getP1() const { return p1; }
-    const Point& getP2() const { return p2; }
-    const Point& getP3() const { return p3; }
+    const Point& getP1() const;
+    const Point& getP2() const;
+    const Point& getP3() const;
 };
