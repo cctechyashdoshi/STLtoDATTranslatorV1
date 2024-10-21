@@ -9,9 +9,10 @@
 #include "Triangle.h"
 #include "Triangulation.h"
 
-class Read {
+class Read 
+{
 public:
     Read();
-    void readFile(const std::string& filename, Triangulation& triangulation);
     ~Read();
+    void readFile(const std::string& filename, Triangulation& triangulation);
 };

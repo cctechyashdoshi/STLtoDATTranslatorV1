@@ -5,7 +5,8 @@
 #include <string>
 
 
-int main() {
+int main() 
+{
     Manager manager;
     manager.managerMain();
     return 0;

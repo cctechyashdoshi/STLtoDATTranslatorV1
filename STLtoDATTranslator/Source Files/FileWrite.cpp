@@ -2,11 +2,16 @@
 #include <fstream>
 #include <iostream>
 
-FileWrite::FileWrite() {}
+FileWrite::FileWrite() 
+{
+}
 
-FileWrite::~FileWrite() {}
+FileWrite::~FileWrite() 
+{
+}
 
-void FileWrite::writeToFile(const std::string& filename, const Triangulation& triangulation) {
+void FileWrite::writeToFile(const std::string& filename, const Triangulation& triangulation) 
+{
     std::ofstream outfile(filename);
     if (!outfile.is_open()) {
         std::cerr << "Error: Could not open file " << filename << std::endl;

@@ -1,12 +1,17 @@
 #include "../Header Files/FileRead.h"
-#include <sstream>
 #include <cassert>
+#include <sstream>
 
-Read::Read() {}
+Read::Read() 
+{
+}
 
-Read::~Read() {}
+Read::~Read() 
+{
+}
 
-void Read::readFile(const std::string& filename, Triangulation& triangulation) {
+void Read::readFile(const std::string& filename, Triangulation& triangulation) 
+{
     std::ifstream infile(filename);
     std::map<Point, int> pointIndexMap;
     std::string line;

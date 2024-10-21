@@ -1,6 +1,7 @@
 #pragma once
 
-class Manager{
+class Manager
+{
 public: 
     void managerMain();
 };

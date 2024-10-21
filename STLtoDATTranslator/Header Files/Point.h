@@ -1,6 +1,7 @@
 #pragma once
 
-class Point {
+class Point 
+{
     double x, y, z;
 public:
 
