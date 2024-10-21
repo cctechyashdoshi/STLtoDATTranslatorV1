@@ -1,11 +1,11 @@
 #include "../Header Files/Triangulation.h"
 
-Triangulation::Triangulation() {
-    // Constructor implementation
+Triangulation::Triangulation() 
+{
 }
 
-Triangulation::~Triangulation() {
-    // Destructor implementation
+Triangulation::~Triangulation() 
+{
 }
 
 std::vector<Triangle>& Triangulation::getTriangles()

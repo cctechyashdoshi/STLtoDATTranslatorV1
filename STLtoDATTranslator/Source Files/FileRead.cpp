@@ -1,6 +1,11 @@
 #include "../Header Files/FileRead.h"
+#include "../Header Files/Point.h"
 #include <cassert>
 #include <sstream>
+#include <fstream>
+#include <vector>
+#include <map>
+#include <string>
 
 Read::Read() 
 {
