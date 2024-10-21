@@ -10,7 +10,7 @@ FileWrite::~FileWrite()
 {
 }
 
-void FileWrite::writeToFile(const std::string& filename, const Triangulation& triangulation) 
+void FileWrite::writeToFile(const std::string& filename, Triangulation& triangulation) 
 {
     std::ofstream outfile(filename);
     if (!outfile.is_open()) {
@@ -18,7 +18,7 @@ void FileWrite::writeToFile(const std::string& filename, const Triangulation& tr
         return;
     }
 
-    for (const auto& triangle : triangulation.triangles) {
+    for (const auto& triangle : triangulation.getTriangles()) {
         outfile << triangle.getP1().getX() << " " << triangle.getP1().getY() << " " << triangle.getP1().getZ() << std::endl;
         outfile << triangle.getP2().getX() << " " << triangle.getP2().getY() << " " << triangle.getP2().getZ() << std::endl;
         outfile << triangle.getP3().getX() << " " << triangle.getP3().getY() << " " << triangle.getP3().getZ() << std::endl;

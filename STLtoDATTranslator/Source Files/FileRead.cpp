@@ -28,8 +28,8 @@ void Read::readFile(const std::string& filename, Triangulation& triangulation)
             Point point(x, y, z);
             auto it = pointIndexMap.find(point);
             if (it == pointIndexMap.end()) {
-                triangulation.uniquePoints.push_back(point);
-                pointIndexMap[point] = static_cast<int>(triangulation.uniquePoints.size()) - 1;
+                triangulation.getUniquePoints().push_back(point);
+                pointIndexMap[point] = static_cast<int>(triangulation.getUniquePoints().size()) - 1;
             }
 
             if (vertexCount == 0) {
@@ -43,10 +43,10 @@ void Read::readFile(const std::string& filename, Triangulation& triangulation)
             vertexCount = (vertexCount + 1) % 3;
 
             if (vertexCount == 0) {
-                triangulation.triangles.push_back(Triangle(
-                    triangulation.uniquePoints[v1],
-                    triangulation.uniquePoints[v2],
-                    triangulation.uniquePoints[v3]
+                triangulation.getTriangles().push_back(Triangle(
+                    triangulation.getUniquePoints()[v1],
+                    triangulation.getUniquePoints()[v2],
+                    triangulation.getUniquePoints()[v3]
                 ));
             }
         }

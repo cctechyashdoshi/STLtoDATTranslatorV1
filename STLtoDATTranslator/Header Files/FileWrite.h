@@ -8,5 +8,5 @@ class FileWrite
 public:
     FileWrite();
     ~FileWrite();
-    void writeToFile(const std::string& filename, const Triangulation& triangulation);
+    void writeToFile(const std::string& filename, Triangulation& triangulation);
 };
