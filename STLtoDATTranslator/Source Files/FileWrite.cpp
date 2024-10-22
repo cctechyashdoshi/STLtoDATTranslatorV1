@@ -18,11 +18,13 @@ void FileWrite::writeToFile(const std::string& filename, Triangulation& triangul
         return;
     }
 
-    for (const auto& triangle : triangulation.getTriangles()) {
-        outfile << triangle.getP1().getX() << " " << triangle.getP1().getY() << " " << triangle.getP1().getZ() << std::endl;
-        outfile << triangle.getP2().getX() << " " << triangle.getP2().getY() << " " << triangle.getP2().getZ() << std::endl;
-        outfile << triangle.getP3().getX() << " " << triangle.getP3().getY() << " " << triangle.getP3().getZ() << std::endl;
-    }
-
-    outfile.close();
+	for (const auto& triangle : triangulation.getTriangles()) {
+		outfile << triangulation.getUniquePoints()[triangle.getP1().getX()] << " " << triangulation.getUniquePoints()[triangle.getP1().getY()] << " " << triangulation.getUniquePoints()[triangle.getP1().getZ()] << std::endl;
+		outfile << triangulation.getUniquePoints()[triangle.getP2().getX()] << " " << triangulation.getUniquePoints()[triangle.getP2().getY()] << " " << triangulation.getUniquePoints()[triangle.getP2().getZ()] << std::endl;
+		outfile << triangulation.getUniquePoints()[triangle.getP3().getX()] << " " << triangulation.getUniquePoints()[triangle.getP3().getY()] << " " << triangulation.getUniquePoints()[triangle.getP3().getZ()] << std::endl;
+		outfile << triangulation.getUniquePoints()[triangle.getP1().getX()] << " " << triangulation.getUniquePoints()[triangle.getP1().getY()] << " " << triangulation.getUniquePoints()[triangle.getP1().getZ()] << std::endl;
+		outfile << std::endl;
+		outfile << std::endl;
+	}
+	outfile.close();
 }
