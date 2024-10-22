@@ -132,6 +132,7 @@
     <ClCompile Include="Source Files\FileWrite.cpp" />
     <ClCompile Include="Source Files\Manager.cpp" />
     <ClCompile Include="Source Files\Point.cpp" />
+    <ClCompile Include="Source Files\Reader.cpp" />
     <ClCompile Include="Source Files\STLtoDATTranslator.cpp" />
     <ClCompile Include="Source Files\Triangle.cpp" />
     <ClCompile Include="Source Files\Triangulation.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Header Files\FileWrite.h" />
     <ClInclude Include="Header Files\Manager.h" />
     <ClInclude Include="Header Files\Point.h" />
+    <ClInclude Include="Header Files\Reader.h" />
     <ClInclude Include="Header Files\Triangle.h" />
     <ClInclude Include="Header Files\Triangulation.h" />
   </ItemGroup>

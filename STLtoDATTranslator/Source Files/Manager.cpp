@@ -5,10 +5,11 @@
 
 void Manager::managerMain() 
 {
-    Read reader;
+    STLReader reader;
     FileWrite writer;
     Triangulation triangulation;
 
-    reader.readFile("cube.stl", triangulation);
+    std::string inputFile = "cube.stl";
+    reader.read(inputFile, triangulation);
     writer.writeToFile("output.dat", triangulation);
 }

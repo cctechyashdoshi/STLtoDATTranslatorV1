@@ -7,12 +7,12 @@
 class Triangulation 
 {
     std::vector<Triangle> triangles;
-    std::vector<Point> uniquePoints;
+    std::vector<double> uniquePoints;
 public:
     Triangulation();
     ~Triangulation();
 
     std::vector<Triangle>& getTriangles();
-    std::vector<Point>& getUniquePoints();
-
+    std::vector<double>& getUniquePoints();
+    void insertTriangles(Triangle& triangle);
 };

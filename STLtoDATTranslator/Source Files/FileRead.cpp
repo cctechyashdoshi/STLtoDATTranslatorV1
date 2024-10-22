@@ -1,61 +1,67 @@
 #include "../Header Files/FileRead.h"
 #include "../Header Files/Point.h"
-#include <cassert>
 #include <sstream>
+#include <iostream>
 #include <fstream>
-#include <vector>
-#include <map>
-#include <string>
 
-Read::Read() 
+using namespace std;
+
+STLReader::STLReader()
 {
 }
 
-Read::~Read() 
+STLReader::~STLReader()
 {
 }
 
-void Read::readFile(const std::string& filename, Triangulation& triangulation) 
-{
-    std::ifstream infile(filename);
-    std::map<Point, int> pointIndexMap;
-    std::string line;
-    int vertexCount = 0;
-    int v1 = -1;
-    int v2 = -1;
-    int v3 = -1;
-
-    while (getline(infile, line)) {
-        if (line.find("vertex") != std::string::npos) {
-            std::istringstream vertexStream(line);
-            std::string token;
+void STLReader::read(std::string& inputFile, Triangulation& triangulation) {
+    ifstream myfile(inputFile);
+    string line;
+    int index = 0;
+    int x1;
+    int y1;
+    int z1;
+    if (myfile.is_open())
+    {
+        while (getline(myfile, line))
+        {
+            istringstream iss(line);
+            string vertex;
             double x, y, z;
-            vertexStream >> token >> x >> y >> z;
-
-            Point point(x, y, z);
-            auto it = pointIndexMap.find(point);
-            if (it == pointIndexMap.end()) {
-                triangulation.getUniquePoints().push_back(point);
-                pointIndexMap[point] = static_cast<int>(triangulation.getUniquePoints().size()) - 1;
+            if (iss >> vertex >> x >> y >> z)
+            {
+                if (vertex == "vertex")
+                {
+                    x1 = findAddValues(x, triangulation);
+                    y1 = findAddValues(y, triangulation);
+                    z1 = findAddValues(z, triangulation);
+                    pointList.push_back(Point(x1, y1, z1));
+                }
             }
-
-            if (vertexCount == 0) {
-                v1 = pointIndexMap[point];
-            } else if (vertexCount == 1) {
-                v2 = pointIndexMap[point];
-            } else if (vertexCount == 2) {
-                v3 = pointIndexMap[point];
-            }
-
-            vertexCount = (vertexCount + 1) % 3;
-
-            if (vertexCount == 0) {
-                triangulation.getTriangles().push_back(Triangle(
-                    triangulation.getUniquePoints()[v1],
-                    triangulation.getUniquePoints()[v2],
-                    triangulation.getUniquePoints()[v3]
-                ));
+            if (static_cast<int>(pointList.size()) == 3)
+            {
+                createTriangles(pointList[0], pointList[1], pointList[2], triangulation);
+                pointList.clear();
             }
         }
     }
+}
+
+int STLReader::findAddValues(double& value, Triangulation& triangulation)
+{
+
+    for (int i = 0; i < triangulation.getUniquePoints().size(); i++)
+    {
+        if (equalChecker(triangulation.getUniquePoints()[i], value))
+            return i;
+    }
+    triangulation.getUniquePoints().push_back(value);
+    int size = triangulation.getUniquePoints().size();
+    return size - 1;
+}
+
+void STLReader::createTriangles(Point& p1, Point& p2, Point& p3, Triangulation& triangulation)
+{
+    Triangle tri(p1, p2, p3);
+    triangulation.insertTriangles(tri);
 }

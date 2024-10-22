@@ -2,11 +2,19 @@
 
 #include <string>
 #include "Triangulation.h"
+#include "Reader.h"
 
-class Read 
+using namespace std;
+
+class STLReader : private Reader
 {
+private:
+    vector<Point> pointList;
 public:
-    Read();
-    ~Read();
-    void readFile(const std::string& filename, Triangulation& triangulation);
+    STLReader();
+    ~STLReader();
+    vector<double> uniquePointList;
+    void read(string& inputFile, Triangulation& triangulation);
+    int findAddValues(double& value, Triangulation& triangulation);
+    void createTriangles(Point& p1, Point& p2, Point& p3, Triangulation& triangulation);
 };
