@@ -9,7 +9,7 @@ void Manager::managerMain()
     FileWrite writer;
     Triangulation triangulation;
 
-    std::string inputFile = "cube.stl";
+    std::string inputFile = "../Test Cases/cube.stl";
     reader.read(inputFile, triangulation);
     writer.writeToFile("output.dat", triangulation);
 }
